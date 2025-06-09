@@ -3,154 +3,109 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:set var="pageTitle" value="캐치마인드" />
-
 <%@ include file="/WEB-INS/jsp/common/header.jsp" %>
 
 
 
 
+		<div class="main_btn">
+		<button class="btn btn-active btn-primary">캐치마인드</button>
+		</div>
 
 
-
-<div>캐치마인드 메인페이지</div>
-
-
-<canvas id="canvas">
-
+<canvas id="canvas" class ="board" width="700px" height="700px">
 </canvas>
 
-	    <div id="palette">
-		  <button class="red">red</button>
-  	      <button class="orange">orange</button>
-	      <span class="orange">orange</span>
-	      <span class="yellow">yellow</span>
-	      <span class="green">green</span>
-	      <span class="blue">blue</span>
-	      <span class="navy">navy</span>
-	      <span class="purple">purple</span>
-	      <span class="black">black</span>
-	      <span class="white">white</span>
-	      <span class="clear">clear</span>
-	      <span class="fill">fill</span>
-	    </div>
 
-
-<script>
-const canvas = document.querySelector("#canvas");
-const ctx = canvas.getContext("2d");
-canvas.width = innerWidth;
-canvas.height = innerHeight;
-
-const width = innerWidth - 90;
-const height = innerHeight - 260;
-
-canvas.width = width;
-canvas.height = height;
-canvas.style.margin = "20px";
-canvas.style.border = "3px double";
-canvas.style.cursor = 'pointer';
-
-let painting = false;
-
-function stopPainting(event) {
-  painting = false;
-}
-
-function startPainting() {
-  painting = true;
-}
-
-ctx.lineWidth = 3;
-function onMouseMove(event) {
-  const x = event.offsetX;
-  const y = event.offsetY;
-  if (!painting) {
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-  } else {
-    ctx.lineTo(x, y);
-    ctx.stroke();
-  }
-}
-
-if (canvas) {
-  canvas.addEventListener("mousemove", onMouseMove);
-  canvas.addEventListener("mousedown", startPainting);
-  canvas.addEventListener("mouseup", stopPainting);
-  canvas.addEventListener("mouseleave", stopPainting);
-}
-
-document.querySelector("#palette").style.marginLeft = "20px";
-const buttons = [
-  "red",
-  "orange",
-  "yellow",
-  "green",
-  "blue",
-  "navy",
-  "purple",
-  "black",
-  "white",
-  "clear",
-  "fill"
-];
-let lineColor = "black";
-
-buttons.forEach((content) => {
-  let button = document.querySelector(`.${content}`);
-  
-button.style.cursor = 'pointer';
-  
-  if (content === "clear" || content === "fill") {
-    
-    button.style.background = "rgba(100,100,100,0.2)";
-  } else {
-    button.style.background = content;
-  }
-  button.style.color = "white";
-  button.style.display = "inline-block";
-  button.style.textShadow =
-    "1px 0 black, 0 1px black, 1px 0 black, 0 -1px gray";
-  button.style.lineHeight = "40px";
-  button.style.textAlign = "center";
-  button.style.width = "50px";
-  button.style.height = "50px";
-  button.style.borderRadius = "25px";
-  button.style.border = "4px solid rgba(129, 101, 101, 0.151)";
-  button.style.boxShadow = "1px 2px 2px gray";
-  button.style.marginBottom = "10px";
-
-  button.onclick = () => {
-    ctx.strokeStyle = content;
-    lineColor = content;
-  };
-});
-
-document.querySelector(".clear").onclick = () => {
-  ctx.clearRect(0, 0, width, height);
-};
-
-document.querySelector(".fill").onclick = () => {
-  ctx.fillStyle = lineColor;
-  ctx.fillRect(0, 0, width, height);
-};
-
-<!-- 요거 그림판은 되는데 색깔은 안되는 이유-->
-<!-- 자바스크립트에서 생성된 변수는 jsp에서 사용이 제한됨 why? 시점의 차이-->
-
-</script>
+		<div class="controls">
+			<div class="controls_range">
+				<input type="range" id="jsRange" min="0.1" max="5.0" value="2.5" step="0.1" />
+			</div>
+			<div class="controls_btns">
+				<button id="jsfill">Fill</button>
+				<button id="jssave">Save</button>
+			</div>
+			<div class="colors" id="Jcolor">
+				<div class="colors jsColor" style="background-color:black;"></div>
+				<div class="colors jsColor" style="background-color: white;"></div>
+				<div class="colors jsColor" style="background-color: red;"></div>
+				<div class="colors jsColor" style="background-color: orange;"></div>
+				<div class="colors jsColor" style="background-color: yellow;"></div>
+				<div class="colors jsColor" style="background-color: green;"></div>
+				<div class="colors jsColor" style="background-color: blue;"></div>			
+				<div class="colors jsColor" style="background-color: navy"></div>
+				<div class="colors jsColor" style="background-color: purple;"></div>
+			</div>
+		</div >
 
 
 
+		<script>
+			const canvas = document.getElementById("canvas");
+			const ctx = canvas.getContext("2d");
+			const colors = document.getElementById("jsColor");
+			const range = document.getElementById("jsRange");
+			
+			
+			  let painting = false;
+			    
+			    function stopPainting(){
+			        painting=false;
+			    }
+			    
+			    
+			    
+			    function startPainting(){
+			    	painting = true;
+			    }
+			    
+			    
+			    
+			    function onMouseMove(event){
+			        
+			        const x = event.offsetX;
+			        const y = event.offsetY;
+			        
+			        if(!painting){
+			            ctx.beginPath();
+			            ctx.moveTo(x,y);
+			        }else{
+			            ctx.lineTo(x,y);
+			            ctx.stroke();
+			        }
+			    }
+			        
+			        
 
-<div class="main_btn">
-<button class="btn btn-active btn-primary">PLAY</button>
-</div>
+			    
+			    function handleColorClick(event){
+			        const color = event.target.style.backgroundColor;
+			        ctx.strokeStyle = color;
+			    }
+				
+			
+			    
+			    function handleRangeChange(event){
+			        const size = event.target.value;
+			        ctx.lineWidth = size;
+			    }
+				
+			    
+			    
+			if (canvas) {
+			  canvas.addEventListener("mousemove", onMouseMove);
+			  canvas.addEventListener("mousedown", startPainting);
+			  canvas.addEventListener("mouseup", stopPainting);
+			  canvas.addEventListener("mouseleave", stopPainting);
 
+			}
+			
+			Array.from(colors => 
+			color.forEach(color.addEventListener("click", handleColorClick));
+			
+			
 
-
-
-
+		</script>
 
 
 

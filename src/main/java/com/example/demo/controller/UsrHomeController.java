@@ -21,5 +21,12 @@ public class UsrHomeController {
 	}
 	
 
+	@GetMapping("/usr/home/main")
+	public String main() {
+
+		return "usr/home/main";
+
+	}
+
 	
 }

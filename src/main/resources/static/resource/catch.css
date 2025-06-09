@@ -10,8 +10,10 @@
 
 
 
+
 html * {
 	font-family: 'D2Coding';
+	
 }
 
 
@@ -24,4 +26,74 @@ html * {
 
 .btn-primary{
 	width : 300px;
+}
+
+
+
+body{
+	background-color : #adeceb;
+		display : flex;
+	flex-direction : column;
+	align-items : center;
+	padding-top : 50px;
+
+}
+
+
+
+.board {
+
+	border-radius : 15px;
+    background-color: #fff;
+	box-shadow : 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.068);
+  	border: 3px solid black;
+ 	text-align: center;
+}
+
+
+
+.controls{
+	margin-top: 80px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.colors{
+
+display: flex;
+
+}
+
+.colors.colors{
+
+width : 450px;
+height: 50px;
+box-shadow: 0 4px 6px rgba(50, 50, 93 0.11), 0 1px 3px rgba(0, 0, 0, 0.068);
+border-radius: 25px;
+cursor:pointer;
+
+}
+
+
+
+.controls.controls_btns{
+	margin-bottom: 30px;
+	box-shadow: 0 4px 6px rgba(50, 50, 93 0.11), 0 1px 3px rgba(0, 0, 0, 0.068);
+}
+
+
+.controls_btns button{
+	background-color: white;
+	cursor:pointer;
+	padding: 5px 0px;
+	width: 80px;
+	border-radius : 10px;
+	box-shadow: 0 4px 6px rgba(50, 50, 93 0.11), 0 1px 3px rgba(0, 0, 0, 0.068);
+	font-size :30px;
+}
+
+
+.controls_btns button:active{
+	transform: scale(0.98);
 }
