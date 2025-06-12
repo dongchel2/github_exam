@@ -1,25 +1,17 @@
 package com.example.catchMind.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class UsrHomeController {
-	
-	
-	@GetMapping("/usr/home/catchMind")
-	public String catchMind() {
 
-		return "usr/home/catchMind";
+    @GetMapping("/")
+    public String showHome(Model model) {
+        return "usr/home/main";  
+    }
 
-	}
-	
-
-	@GetMapping("/")
-	public String showRoot() {
-		return "redirect:/usr/home/catchMind";
-	}
-	
 
 	@GetMapping("/usr/home/main")
 	public String main() {
@@ -27,6 +19,17 @@ public class UsrHomeController {
 		return "usr/home/main";
 
 	}
+    
+    
+	@GetMapping("/usr/home/catchMind")
+	public String catchMind() {
+	
+		return "usr/home/catchMind";
+	
+	}
 
+
+
+	
 	
 }
