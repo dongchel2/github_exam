@@ -1,11 +1,17 @@
 package com.example.catchMind.dto;
 
 public class CatchMindMessage {
-
+	
+	
+	// 메시지 타입: "DRAW", "CHAT", "SYSTEM", "ANSWER"
     private String type;
+    // 보낸 사람 닉네임
     private String sender;
+    // 채팅 내용 or 정답
     private String content;
 
+    
+    // 그림 좌표 
     private int x1;
     private int y1;
     private int x2;
@@ -22,6 +28,7 @@ public class CatchMindMessage {
 
     public String getContent() { return content; }
     public void setContent(String content) { this.content = content; }
+
 
     public int getX1() { return x1; }
     public void setX1(int x1) { this.x1 = x1; }
