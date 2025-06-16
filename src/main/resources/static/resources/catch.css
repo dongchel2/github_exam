@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+/* D2Coding 폰트 설정 */
+@font-face {
+    font-family: 'D2Coding';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+    font-family: 'D2Coding', sans-serif;
+    background-image: url('/resources/images/bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/*  전체 중앙 정렬 wrapper */
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* 메인 박스 */
+.main-box {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    max-width: 500px;
+    
+    width: 100%;
+    margin-bottom:70px;
+}
+
+/* 제목 */
+.main-box h1 {
+    font-size: 2.2rem;
+    color: #6b21a8;
+    margin-bottom: 1rem;
+}
+
+/*  설명 문구 */
+.main-box p {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 1.5rem;
+}
+
+/*  닉네임 입력창 */
+.main-box input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+/*  버튼 */
+.main-box button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+
+
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.main-box button:hover {
+    cursor: pointer;
+    
+   /*     background-color: #6b21a8; */
+}
