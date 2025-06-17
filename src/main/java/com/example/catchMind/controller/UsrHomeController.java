@@ -1,14 +1,13 @@
 package com.example.catchMind.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class UsrHomeController {
 
     @GetMapping("/")
-    public String showHome(Model model) {
+    public String showHome() {
         return "usr/home/main";  
     }
 
